@@ -1,0 +1,50 @@
+<head>
+</head>
+
+<body>
+<button>Click! </button>
+
+<script>
+//version of game using promises
+function startGame() {
+
+  let counter = 0;
+  document.querySelector('button').addEventListener('click', () => {
+    ++counter;
+  });
+
+//a promise handles any code that it is going to execute in the future
+//promise has 3 kinds of state: resolve, reject & unresolve
+//then is for resolve, catch is for reject
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+  return new Promise ((resolve, reject) => {
+    setTimeout(() => {
+      if(counter > 5) {
+        resolve();
+      } else {
+        reject();
+      }
+    }, 2000);
+  });
+}
+startGame()
+  .then(() => alert('You won!'))
+  .catch(() => alert('You lost'));
+
+//basic JS version with no promises
+// let counter = 0;
+// document.querySelector('button').addEventListener('click', () => {
+//   ++counter;
+// });
+//
+// setTimeout(() => {
+//   if(counter > 5) {
+//     alert('you won! Your clicks: ' + counter);
+//   } else {
+//     alert('you lost');
+//   }
+// }, 2000)
+
+
+</script>
+</body>
